@@ -10,3 +10,8 @@ https://www.w3schools.com/python/numpy_intro.asp
 https://www.w3schools.com/python/pandas/default.asp
 https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html
 https://www.ntirawen.com/2018/09/iris-dataset-prediction-in-machine.html
+http://seaborn.pydata.org/generated/seaborn.FacetGrid.html
+
+## Histograms
+
+I added 4 histograms to the project using Seaborn. The 4 plots attached are petal length, petal width, sepal length and sepal width. The 3 Irises are on each plot.
