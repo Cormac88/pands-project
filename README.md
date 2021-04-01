@@ -11,7 +11,15 @@ https://www.w3schools.com/python/pandas/default.asp
 https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html
 https://www.ntirawen.com/2018/09/iris-dataset-prediction-in-machine.html
 http://seaborn.pydata.org/generated/seaborn.FacetGrid.html
+https://sklearn.org/
+
+## Analysis
+
+I have created 2 python files. the first one goes through the library sklear which is a library called Scikitlearn.
+I take a look at various features of the dataset using numpy and pandas. I then creat 5 histograms. The second file
+performs a matrix operation called a transformation on the numpy array of the features.
 
 ## Histograms
 
-I added 4 histograms to the project using Seaborn. The 4 plots attached are petal length, petal width, sepal length and sepal width. The 3 Irises are on each plot.
+I added 5 histograms to the project using Matloplib.  Sepal length, sepal width, petal lenght, petal width and one that is just the targets (species). The targets have a one to one relation because there are 50 samples for each species.
+

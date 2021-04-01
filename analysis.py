@@ -1,37 +1,43 @@
 # Fisher’s Iris data set
 # Author: Cormac Hennigan
 
-import numpy as np
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.datasets import load_iris
 
-columns = ['sepal_length','sepal_width','petal_length','petal_width','type']
-iris = pd.read_csv("Iris Data.csv", names = columns)
+iris = load_iris()
+# print(iris)
 
-print("First five rows")
-print(iris.head())
-print("*********")
-print("columns",iris.columns)
-print("*********")
-print("shape:",iris.shape)
-print("*********")
-print("Size:",iris.size)
-print("*********")
-print("no of samples available for each type") 
-print(iris["type"].value_counts())
-print("*********")
-print(iris.describe())
+# print(iris.data.shape) # shows dimentions. 150 rows, 4 columns or attributes (elements)
+# print(iris.target.shape) # One dimention
+# print(iris.feature_names)
+# print(iris.target_names) # targets are the names of the species of iris. They are a numpy array
+# print(iris.DESCR) # Attribut info, summary status etc
 
-iris_setosa = iris.loc[iris["type"] == "Iris-setosa"]
-iris_virginica = iris.loc[iris["type"] == "Iris-virginica"]
-iris_versicolor = iris.loc[iris["type"] == "Iris-versicolor"]
+# Convert data into Pandas dataframe
 
-sns.FacetGrid(iris,hue="type",size=3).map(sns.distplot,"petal_length").add_legend()
-plt.savefig("Petal Length")
-sns.FacetGrid(iris,hue="type",size=3).map(sns.distplot,"petal_width").add_legend()
-plt.savefig("Petal Width")
-sns.FacetGrid(iris,hue="type",size=3).map(sns.distplot,"sepal_length").add_legend()
-plt.savefig("Sepal Length")
-sns.FacetGrid(iris,hue="type",size=3).map(sns.distplot,"sepal_width").add_legend()
-plt.savefig("Sepal Width")
+df = pd.DataFrame(iris.data, columns = iris.feature_names)
+# print(df.head()) # First 5 entries
+# print(df.tail())
+
+# Include the target
+
+df['target'] = iris.target # shows the targets (species) as numerical values. 0, 1 and 2.
+# print(df.head())
+
+# print(df.dtypes) # Shows the data types. The petals and sepals are floats and the targets are ints.
+
+# print(df.describe())
+#print(df.groupby('target').size()) # Shows that there are 50 entries for each species
+
+# Data Visualistaton
+
+df.hist(figsize=(12, 12))
+# plt.show()
+plt.savefig('Histograms')
+
+
+# 5 Histograms. Sepal length, sepal width, petal lenght, petal width and one that is just the targets(species).
+# The targets have a one to one relation because there are 50 samples for each species.
