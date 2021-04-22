@@ -448,6 +448,149 @@ logreg.predict(X_new)
 
 This time, the model has predicted a value of 2 for the first unknown Iris, and a value of 0 for the second unknown Iris. So which model produced the correct predictions for these 2 unknown Irises? The answer is that we don't know because these are out of sample observations, meaning that we don't know the true response values. As I said earlier, our goal with supervised learning is to build models that generalise to new data. However, we often aren't able to truly measure how well our models will perform on out of sample data. Does that mean that we are forced to just guess how well our models are likely to do? The answe to this is no.
 
+## Evaluation procedure #1: Train and test on the entire dataset
+
+This is where we Train the model on the entire dataset, and then test the model by checking how well it performs on that same data. This appears to solve our original problem which was that we made some predictions, but we couldn't check if those predictions were correct. By testing our model on a dataset where we do know the **true** response values, we can check how well our model is doing by comparing the **predicted** response values with the **true** response values. Let's start by reading in the Iris data and then creating our feature matrix `X` and and our response vector y.
+
+
+```python
+X = iris.data
+y = iris.target
+```
+
+
+```python
+# import the class
+from sklearn.linear_model import LogisticRegression
+
+# instantiate the model
+logreg = LogisticRegression(solver='liblinear')
+
+# fit the model with data
+logreg.fit(X, y)
+
+# predict the response values for the observations in X
+logreg.predict(X)
+```
+
+
+
+
+    array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+           0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+           0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+           2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1,
+           1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+           2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2,
+           2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
+
+
+
+We'll start with Logistic Regression. Again we import the class, intantiate the model, and fir the model with the training data. Then we make our predictions by passing the entire feature matrix X to the predict method of the fitted model and print out those predictions. We then store those predictions in an object called y_pred. As we can see, it made 150 predictions, one prediction for each observation.
+
+
+```python
+# store the predicted response values
+y_pred = logreg.predict(X)
+
+# check how many predictions were generated
+len(y_pred)
+```
+
+
+
+
+    150
+
+
+
+## Classification accuracy:
+
+Now we need a numerical way to evaluate how well the model performed. The most obvious choice would be classification accuracy which is the proportion of correct predictions. This is know as the evaluation metric. There are many possible evaluation metrics. Let's compute the classification accuracy for the logistic regression model. We'll use the metrics module from scikit-learn. First, we import the metrics module, then we use the accuracy score funcion and pass it the true response values followed by the predicted response values.
+
+
+```python
+from sklearn import metrics
+print(metrics.accuracy_score(y, y_pred))
+```
+
+    0.96
+    
+
+It returns a value of 0.96. This means that it compared the 150 true responses with the corresponding 150 predicted responses and calculated that 96% of our predictions were correct. This is known as our training accuracy because we are testing the model on the same data we used to train the model. We'll now try KNN using the value k=5. We import the class, instantiate the model using the argument n_neighbours=5, fir it with the training data, make predictions on the same data, and calculate the classification accuracy.
+
+## KNN (K=5)
+
+
+```python
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X, y)
+y_pred = knn.predict(X)
+print(metrics.accuracy_score(y, y_pred))
+```
+
+    0.9666666666666667
+    
+
+This time we get 0.967 which is slightly better than logistic regression. Finally we'll try KNN=1.
+
+## KNN=1
+
+
+```python
+knn = KNeighborsClassifier(n_neighbors=1)
+knn.fit(X, y)
+y_pred = knn.predict(X)
+print(metrics.accuracy_score(y, y_pred))
+```
+
+    1.0
+    
+
+This time we get a score of 1.0 or 100% accuracy. It performed even better than the other 2 models, and so we would conclude that KNN with k=1 is the best model to use with this data. Going back to how the KNN model works. To make a prediction, it it looks for k observations in the training data with the nearest feature values, it tallies the actual response values of those nearest observations, and then whichever response value is most popular is used as the predicted response value for the unknown observation. You can see exactly why the KNN model with k=1 would always have 100% training accuracy. To make a prediction for any observation in the training set, KNN would search for the 1 nearest observation in the training set and it would find that exact same observation. In other words, KNN has memorised the training set and because we are training on the exact same data it will always make correct predictions. At this point we might conclude that training and testing the models on the same data is not a useful procedure for deciding which model to choose. This is correct. The goal here is to estimate how well each model is likely to perform on out of sample data, meaning future observations in which we don't know the true response values. If what we try to maximise is training accuracy, then we're rewarding overly complex models that won't necessarily generalise to future cases. Models with a high training accuracy may not actualy do well when making predictions on out of sample data. Creating an unnecessarily complex model is known as overfitting. Models that overfit have learned that the noise in the data rather than the signal. In the case of KNN, a very low value of k creates a high complexity model because it follows the noise in the data. The below diagram explains overfitting.
+
+![05_overfitting.png](attachment:05_overfitting.png)
+
+Each point represents and observation. The X and Y locations represent its feature values and the colour represents the response class. For a classification problem, you want the model to learn that the black line or decision boundary, is a good boundary for classifying future observations as red or blue. It won't do a perfect job classifying the training observations but it is likely to do a great job classifying out of sample data. A model that learns the green line as the decision boundary is overfitting the data. It does a great job classifying the training observations, but it won't do as well as the black line when classifying out of sample data. The green line has learned the noise in the signal but the black line has learned the signal. Since training and testing on the same data is not optimal as an evaluation procedure we'll need a better one. The next one we'll look at is called train-test-split.
+
+## Evaluation procedure #2: Train/test split
+
+First we split the data into 2 pieces, a training set and a testing set. We train the model on the training set and then we test the model on the testing set to evaluate how well it did. Because we are evaluating the model on data that was not used to train the model, we're more accurately simulating how well a model is likely to perform on out of sample data. Let's apply this procedure to the iris data. To spit the data into training and testing sets we'll use scikit-learn's built in train_test_split function. We'll import it and use the command to split the X and y objects into 2 peices each.
+
+
+```python
+# STEP 1: split X and y into training and testing sets
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=4)
+```
+
+The below diagram explains the train_test_split function.
+
+![05_train_test_split.png](attachment:05_train_test_split.png)
+
+The diagram shows 5 observations, consisting of 2 features and a response value. The response value is numeric, meaning that this is a regression problem. The X matrix is 5x2 columns, and the y vector just has 5 values. If you ran the rain_test_split function on X and y, it would split X into X_train and X_test (yellow and blue) and it would split y into y_train and y_test (orange and purple). We now have a feature matrix X-train that is size 3x2 and a response vector y_train that is size 3 and we can use those objects to train the model. Then we can make predictions on X_test and compare those predictions to the actual response values in y_test to calculate what is known as the testing accuracy. Since we're training and testing the model on different sets of data, the resulting accuracy is a better estimate of how well the model is likely to perform on future data. But how does train_test_split decide which observations and how many observations are assigned to the training set vs the testing set? This optional test size parameter determines the proportion of observations assigned to the testing set. In this case I assigned 40% of the observatoins to the testing set, and so 60% will be assigned to the training set. There's no general rule for what percentage is best, but it is common to use between 20-40% for testing. In terms of how the observations are assigned, it's a random process. If we were to run this function again, it would split the data differently. We could use a parameter called random_state and give it a value to seed the dataset everytime. I used random_state=4. Let's check the shapes of these 4 objects and make sure that they match our expectations.
+
+
+```python
+print(X_train.shape)
+print(X_test.shape)
+```
+
+    (90, 4)
+    (60, 4)
+    
+
+
+```python
+print(y_train.shape)
+print(y_test.shape)
+```
+
+    (90,)
+    (60,)
+    
+
 
 ```python
 

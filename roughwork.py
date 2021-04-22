@@ -66,4 +66,4 @@ plt.xlabel(sepal_length_label)
 plt.ylabel(sepal_width_label)
 #plt.show()
 
-print(iris)
+#print(iris)
