@@ -290,19 +290,19 @@ Before I go any further into machine learning and how we can train it to choose 
 
 ## Example training data
 
-![Data3classes](/images/Data3classes.png)
+![Data3classes](/Images/Data3classes.png)
 
 The above example training data. This is not the Iris dataset. This dataset has two numerical features represented by the X and Y coordinates. Each point represents an observation, and the colour of the point represents it's response class.
 
 ## KNN classification map (K=1)
 
-![Map1NN](/images/Map1NN.png)
+![Map1NN](/Images/Map1NN.png)
 
 Next, we have a KNN classification map in which the K value is one. The backgound of the diagram has been coloured red for all areas in which all the nearest neighbours are red, coloured blue for all areas in which all the nearest neighbours are blue and coloured green for all areas in which all the nearest neighbours are green. The background colour tells us what the predicted response value would be for a new observation depending on it's X and Y features. 
 
 ## KNN classification map (K=5)
 
-![Map5NN](/images/Map5NN.png)
+![Map5NN](/Images/Map5NN.png)
 
 The third image is an image of a KNN classification map in which the K value is 5. We can see that the boundaries between colours, known as **decision boundaires** have changed, because more neighbours are taken into account when making predictions. The white ares are areas in which KNN can't make a clear decision because there is a "tie" between two classes. KNN is a simple machine learning model, but it can make highly accurate predictions if the different classes in the dataset have varied dissimilar feature values.
 
@@ -550,7 +550,7 @@ print(metrics.accuracy_score(y, y_pred))
 
 This time we get a score of 1.0 or 100% accuracy. It performed even better than the other 2 models, and so we would conclude that KNN with k=1 is the best model to use with this data. Going back to how the KNN model works. To make a prediction, it it looks for k observations in the training data with the nearest feature values, it tallies the actual response values of those nearest observations, and then whichever response value is most popular is used as the predicted response value for the unknown observation. You can see exactly why the KNN model with k=1 would always have 100% training accuracy. To make a prediction for any observation in the training set, KNN would search for the 1 nearest observation in the training set and it would find that exact same observation. In other words, KNN has memorised the training set and because we are training on the exact same data it will always make correct predictions. At this point we might conclude that training and testing the models on the same data is not a useful procedure for deciding which model to choose. This is correct. The goal here is to estimate how well each model is likely to perform on out of sample data, meaning future observations in which we don't know the true response values. If what we try to maximise is training accuracy, then we're rewarding overly complex models that won't necessarily generalise to future cases. Models with a high training accuracy may not actualy do well when making predictions on out of sample data. Creating an unnecessarily complex model is known as overfitting. Models that overfit have learned that the noise in the data rather than the signal. In the case of KNN, a very low value of k creates a high complexity model because it follows the noise in the data. The below diagram explains overfitting.
 
-![05_overfitting](/images/05_overfitting.png)
+![05_overfitting](/Images/05_overfitting.png)
 
 Each point represents and observation. The X and Y locations represent its feature values and the colour represents the response class. For a classification problem, you want the model to learn that the black line or decision boundary, is a good boundary for classifying future observations as red or blue. It won't do a perfect job classifying the training observations but it is likely to do a great job classifying out of sample data. A model that learns the green line as the decision boundary is overfitting the data. It does a great job classifying the training observations, but it won't do as well as the black line when classifying out of sample data. The green line has learned the noise in the signal but the black line has learned the signal. Since training and testing on the same data is not optimal as an evaluation procedure we'll need a better one. The next one we'll look at is called train-test-split.
 
@@ -567,7 +567,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_
 
 The below diagram explains the train_test_split function.
 
-![05_train_test_split](/images/05_train_test_split.png)
+![05_train_test_split](/Images/05_train_test_split.png)
 
 The diagram shows 5 observations, consisting of 2 features and a response value. The response value is numeric, meaning that this is a regression problem. The X matrix is 5x2 columns, and the y vector just has 5 values. If you ran the rain_test_split function on X and y, it would split X into X_train and X_test (yellow and blue) and it would split y into y_train and y_test (orange and purple). We now have a feature matrix X-train that is size 3x2 and a response vector y_train that is size 3 and we can use those objects to train the model. Then we can make predictions on X_test and compare those predictions to the actual response values in y_test to calculate what is known as the testing accuracy. Since we're training and testing the model on different sets of data, the resulting accuracy is a better estimate of how well the model is likely to perform on future data. But how does train_test_split decide which observations and how many observations are assigned to the training set vs the testing set? This optional test size parameter determines the proportion of observations assigned to the testing set. In this case I assigned 40% of the observatoins to the testing set, and so 60% will be assigned to the training set. There's no general rule for what percentage is best, but it is common to use between 20-40% for testing. In terms of how the observations are assigned, it's a random process. If we were to run this function again, it would split the data differently. We could use a parameter called random_state and give it a value to seed the dataset everytime. I used random_state=4. Let's check the shapes of these 4 objects and make sure that they match our expectations.
 
