@@ -4,7 +4,7 @@
 
 The Iris flower data set or Fisher's Iris data (also called Anderson's Iris data set) set is a multivariate data set introduced by the British statistician and biologist Ronald Fisher in his 1936 paper "The use of multiple measurements in taxonomic problems". The data set consists of 3 species of Iris plants (Setosa, Versicolor and Virginica). Edgar Anderson collected 50 samples of the flower, of which each was a different species. He collected 150 in total. For each sample he measured the sepal length and width, and the petal length and width along with the corresponding species. The data contains the sepal length and width, and the petal length and width.
 
-![iris-machinelearning.png](attachment:iris-machinelearning.png)
+![iris-machinelearning.png](https://github.com/Cormac88/pands-project/blob/main/Images/iris-machinelearning.png?raw=true)
 
 ## Iris dataset file
 This Iris dataset contains a set of 150 records which represent three iris species (Iris setosa, Iris versicolor and Iris virginica) with 50 samples each. I took the dataset file from the Scikit-learn library on my computer:
@@ -148,7 +148,7 @@ df.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -226,7 +226,7 @@ df.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -308,7 +308,7 @@ df.describe()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -462,9 +462,9 @@ plt.ylabel("Frequency", size = 16)
 
 
 
-    
+​    
 ![png](README_files/README_32_1.png)
-    
+​    
 
 
 
@@ -486,9 +486,9 @@ plt.ylabel("Frequency", size = 16)
 
 
 
-    
+​    
 ![png](README_files/README_33_1.png)
-    
+​    
 
 
 
@@ -510,9 +510,9 @@ plt.ylabel("Frequency", size = 16)
 
 
 
-    
+​    
 ![png](README_files/README_34_1.png)
-    
+​    
 
 
 
@@ -534,9 +534,9 @@ plt.ylabel("Frequency", size = 16)
 
 
 
-    
+​    
 ![png](README_files/README_35_1.png)
-    
+​    
 
 
 I set hue to the target (features) for these histograms. Hue is a grouping variable that will produce points with different colors. In other words, I grouped the plots into their categories. We can see from the histograms that Iris Setosa (0) has a much smaller petal length and petal width than the other 2 species. For Petal length and width, Virginica (2) has the biggest petal length and width and Versicolor (1) is in the middle. There is a bit of overlap between Virginica and Versicolor so they can't be separated. For sepal length and width Setosa (0) has the smallest sepal length and the largest sepal width and so it can be pretty easily separated from the other 2 but Virginica (2) and Versicolor (1) have too much overlap. This is why the colours get mixed together.
@@ -563,9 +563,9 @@ plt.legend(title="Target", loc=0)
 
 
 
-    
+​    
 ![png](README_files/README_38_1.png)
-    
+​    
 
 
 
@@ -588,9 +588,9 @@ plt.legend(title="Target", loc=0)
 
 
 
-    
+​    
 ![png](README_files/README_39_1.png)
-    
+​    
 
 
 Hue was again set to target for these plots. We can see from the scatterplots that Iris Setosa (0) can be separated by petal length and width. It has smaller petals in general than the other 2. Virginica (2) has the biggest petal length and width and Versicolor (1) is in the middle. For sepal length and width Setosa (0) has the smallest sepal length and the largest sepal width and so it can be pretty easily separated from the other 2 but Virginica (2) and Versicolor (1) have too much overlap. This corresponds to the histogram data above
@@ -617,7 +617,7 @@ sns.pairplot(df, hue = "target", diag_kind = "hist", palette = "nipy_spectral")
 
 
 
-    
+
 ![png](README_files/README_42_2.png)
     
 
@@ -643,7 +643,7 @@ df.corr()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -724,9 +724,9 @@ sns.heatmap(df.corr(), annot=True, cmap='Wistia')
 
 
 
-    
+​    
 ![png](README_files/README_47_1.png)
-    
+​    
 
 
 I then passed df.corr() into the seaborn heatmap plot. The heatmap shows variation in the data which is portrayed using a color palette. So we can see that petal length and petal width have a very high correlation. Petal lenght and sepal length are also highly correlated. We can ignore the target in this plot because they are just the categories. We can also ignore all the ones as they are just the features corresponding to themselves.
@@ -767,7 +767,7 @@ print(iris.feature_names)
 ```
 
     ['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']
-    
+
 
 This represents the names of the four features. They can also be imagined as the column headers for the data. I also printed out two more attributes called `target` and `target_names`. 
 
@@ -781,7 +781,7 @@ print(iris.target)
      1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2
      2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
      2 2]
-    
+
 
 
 ```python
@@ -789,7 +789,7 @@ print(iris.target_names)
 ```
 
     ['setosa' 'versicolor' 'virginica']
-    
+
 
 The target represents what I am going to predict. A 0 represents Setosa, a 1 represents Versicolor and a 2 represents Virginica as mentioned previously. Some equivalent terms for target are **response**, outcome, outcome, label, dependent variable. I will use the term response throughout this project.
 
@@ -812,7 +812,7 @@ print(type(iris.target))
 
     <class 'numpy.ndarray'>
     <class 'numpy.ndarray'>
-    
+
 
 
 ```python
@@ -820,7 +820,7 @@ print(iris.data.shape)
 ```
 
     (150, 4)
-    
+
 
 
 ```python
@@ -828,7 +828,7 @@ print(iris.target.shape)
 ```
 
     (150,)
-    
+
 
 I have now verified that `iris.data` and `iris.target` meet scikit-learn's four requirements for feature and response objects. The scikit-learn convention is for the feature data to be stored in an object named 'X', and for the response data to be stored in an object named 'y'. We'll store `iris.data` in 'X' and `iris.target` in 'y'. The 'X' is capitalised because it represents a matrix and the 'y' is lower case because it represents a vector. 
 
@@ -847,19 +847,19 @@ Before I go any further into machine learning and how we can train it to choose 
 
 #### Example training data
 
-![Data3classes.png](attachment:Data3classes.png)
+![Data3classes.png](https://github.com/Cormac88/pands-project/blob/main/Images/Data3classes.png?raw=true)
 
 The above is an example of training data. This dataset has two numerical features represented by the X and Y coordinates. Each point represents an observation, and the colour of the point represents it's response class(target).
 
 #### KNN classification map (K=1)
 
-![Map1NN.png](attachment:Map1NN.png)
+![Map1NN.png](https://github.com/Cormac88/pands-project/blob/main/Images/Map1NN.png?raw=true)
 
 Next, we have a KNN classification map in which the K value is one. The backgound of the diagram has been coloured red for all areas where all the nearest neighbours are red, coloured blue for all areas in which all the nearest neighbours are blue and coloured green for all areas where the nearest neighbours are green. The background colour tells us what the predicted response value would be for a new observation depending on it's X and Y features. 
 
 #### KNN classification map (K=5)
 
-![Map5NN.png](attachment:Map5NN.png)
+![Map5NN.png](https://github.com/Cormac88/pands-project/blob/main/Images/Map5NN.png?raw=true)
 
 The third image is an image of a KNN classification map where the K value is 5. We can see that the boundaries between colours, known as **decision boundaires**, have changed because more neighbours are taken into account when making predictions. The white areas are areas in which KNN can't make a clear decision because there is a "tie" between two classes. KNN is a simple machine learning model, but it can make highly accurate predictions if the different classes in the dataset have varied dissimilar feature values.
 
@@ -871,7 +871,7 @@ print(y.shape)
 
     (150, 4)
     (150,)
-    
+
 
 We can see above that 'X' is a 2-dimensional array with 150 rows and 4 columns as expected and 'y' is a 1-dimensional array with length 150 since there is one response value for each observation.
 
@@ -1057,7 +1057,7 @@ print(metrics.accuracy_score(y, y_pred))
 ```
 
     0.96
-    
+
 
 It returns a value of 0.96. This means that it compared the 150 true responses with the corresponding 150 predicted responses and calculated that 96% of our predictions were correct. This is known as our training accuracy because we are testing the model on the same data we used to train the model. We'll now try KNN using the value k=5. We import the class, instantiate the model using the argument n_neighbours=5, fit it with the training data, make predictions on the same data, and calculate the classification accuracy.
 
@@ -1073,7 +1073,7 @@ print(metrics.accuracy_score(y, y_pred))
 ```
 
     0.9666666666666667
-    
+
 
 This time we get 0.967 which is slightly better than logistic regression. Finally we'll try KNN=1.
 
@@ -1088,7 +1088,7 @@ print(metrics.accuracy_score(y, y_pred))
 ```
 
     1.0
-    
+
 
 This time we get a score of 1.0 or 100% accuracy. It performed even better than the other 2 models, and so we would conclude that KNN with k=1 is the best model to use with this data. However, this is misleading. We can see exactly why the KNN model with k=1 would always have 100% training accuracy: To make a prediction for any observation in the training set, KNN searches for the 1 nearest observation in the training set and it would find that exact same observation the second time. KNN has memorised the training set and because we are training on the exact same data it will always make correct predictions. At this point we can conclude that training and testing the models on the same data is not a useful procedure for deciding which model to choose. The goal here is to estimate how well each model is likely to perform on out of sample data. If what we try to maximise is training accuracy, then we're rewarding overly complex models that won't necessarily do well with out of sample data. Creating an unnecessarily complex model is known as overfitting. Models that overfit have learned to identify the noise in the data rather than the signal. In the case of KNN, a very low value of k creates a high complexity model because it follows the noise in the data. The below diagram explains overfitting.
 
@@ -1117,7 +1117,7 @@ print(X_test.shape)
 
     (90, 4)
     (60, 4)
-    
+
 
 We can see that the original X of 150x4 has been split into 2 pieces in which X_train is size 90x4 and X_test is size 60x4.
 
@@ -1129,7 +1129,7 @@ print(y_test.shape)
 
     (90,)
     (60,)
-    
+
 
 The original y of size 150 has also been split into 2 pieces in which y_train is size 90 and y_test size is 60.
 
@@ -1160,7 +1160,7 @@ print(metrics.accuracy_score(y_test, y_pred))
 ```
 
     0.9333333333333333
-    
+
 
 We can see that this model achieved a testing accuracy of 93%.
 
@@ -1176,7 +1176,7 @@ print(metrics.accuracy_score(y_test, y_pred))
 ```
 
     0.9666666666666667
-    
+
 
 For k=5, we achieve a testing accuracy of 97%.
 
@@ -1191,7 +1191,7 @@ print(metrics.accuracy_score(y_test, y_pred))
 ```
 
     0.95
-    
+
 
 For k=, we achieve a testing accuracy of 95%.
 
@@ -1230,9 +1230,9 @@ plt.ylim(0.94,1)
 
 
 
-    
+​    
 ![png](README_files/README_130_1.png)
-    
+​    
 
 
 In general, as the value of k increases, there is a rise in the testing accuracy and then a fall. This is quite typical when examining the relationship between model complexity and testing accuracy. As said earlier, training accuracy rises as model complexity increases, and the model complexity for KNN is determined by the value of k. On the other hand, testing accuracy penalises models that are too complex and models that are not complex enough. Therefore you'll see maximum testing accuracy when the model has the right level of complexity. Here, we see that the highest accuracy from k=6 to k=17, so we can conclude that a k value in that range would be better than k=5. However, since this dataset it quite small and this is also an easy classification task, it's hard to reliably say that the behaviour that we see here in this plot will generalise. Regardless, plotting testing accuracy vs model complexity is a very useful way to tune any parameters that relate to model complexity. 
