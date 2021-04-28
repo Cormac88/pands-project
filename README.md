@@ -19,7 +19,7 @@ The columns that represent records mentioned above from left to right are:
 - Petal Width
 - Target(Species)
 
-The 150 referes to the number of samples, the 4 refers to the number of features and the species names are also present in the csv. The layout of this CSV is different to the standard layout for the Iris dataset in a CSV and this is because I used the Scikit-learn library which uses NumPy to read and convert the data to NumPy arrays. One other thing to note is that the species will be refered to as the target throughout this project and each species of Iris will be assigned a numerical value. Iris Setosa is 0, Iris Versicolor is 1 and Iris Virginica is 2. This is machine learning terminology which will be discussed more later in the project.
+The 150 refers to the number of samples, the 4 refers to the number of features and the species names are also present in the csv. The layout of this CSV is different to the standard layout for the Iris dataset in a CSV and this is because I used the Scikit-learn library which uses NumPy to read and convert the data to NumPy arrays. One other thing to note is that the species will be referred to as the target throughout this project and each species of Iris will be assigned a numerical value. Iris Setosa is 0, Iris Versicolor is 1 and Iris Virginica is 2. This is machine learning terminology which will be discussed more later in the project.
 
 ## Code Used to Analyse the Dataset
 
@@ -62,7 +62,7 @@ List of usefull cheat sheets for libraries used in this project:
 - Seaborn
 
 ### Properties of the Scikit-learn Iris dataset
-The first thing that I did with the Iris data set was to save the imported dataset was to save it into an object called iris.
+The first thing that I did with the Iris data set was to import the dataset from the sklearn.datasets library (from sklearn.datasets import load_iris). Then I saved the imported dataset was to save it into an object called iris.
 
 
 ```python
@@ -73,11 +73,13 @@ type(iris)
 
 
 
-    sklearn.utils.Bunch
+```python
+sklearn.utils.Bunch
+```
 
 
 
-We can see from the above code that the object iris is of type sklearn.utils.Bunch. Bunch objects are sometimes used as an output for functions and methods. They extend dictionaries by enabling values to be accessed by key. We could print the whole iris objcect to see all the information in it. I've done this is done in the analysis file. Since iris is a dictionary object we can use keys() to see all of the keys in the dataset.
+We can see from the above code that the object iris is of type sklearn.utils.Bunch. Bunch objects are sometimes used as an output for functions and methods. They extend dictionaries by enabling values to be accessed by key. We could print the whole iris object to see all the information in it. I've done this is done in the analysis file. Since iris is a dictionary object we can use keys() to see all of the keys in the dataset.
 
 
 ```python
@@ -87,7 +89,9 @@ iris.keys()
 
 
 
-    dict_keys(['data', 'target', 'frame', 'target_names', 'DESCR', 'feature_names', 'filename'])
+```py
+dict_keys(['data', 'target', 'frame', 'target_names', 'DESCR', 'feature_names', 'filename'])
+```
 
 
 
@@ -101,10 +105,12 @@ iris.feature_names
 
 
 
-    ['sepal length (cm)',
-     'sepal width (cm)',
-     'petal length (cm)',
-     'petal width (cm)']
+```python
+['sepal length (cm)',
+ 'sepal width (cm)',
+ 'petal length (cm)',
+ 'petal width (cm)']
+```
 
 
 
@@ -120,9 +126,11 @@ df.keys()
 
 
 
-    Index(['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)',
-           'petal width (cm)'],
-          dtype='object')
+```python
+Index(['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)',
+       'petal width (cm)'],
+      dtype='object')
+```
 
 
 
@@ -145,14 +153,17 @@ df.head()
         vertical-align: middle;
     }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-    
-    .dataframe thead th {
-        text-align: right;
-    }
+```python
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+```
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -205,7 +216,7 @@ df.head()
 
 
 
-This opertation returns the first n rows for the object based on position. It is useful for quickly testing if your object has the right type of data in it. If no argument is passed through then n=5.
+This operation returns the first n rows for the object based on position. It is useful for quickly testing if your object has the right type of data in it. If no argument is passed through then n=5.
 We can include the target as another column in this dataframe by by using the [] brackets with the new column name at the left side of the assignment.
 
 
@@ -407,11 +418,13 @@ df.groupby('target').size()
 
 
 
-    target
-    0    50
-    1    50
-    2    50
-    dtype: int64
+```python
+target
+0    50
+1    50
+2    50
+dtype: int64
+```
 
 
 
@@ -424,7 +437,7 @@ The other operations I used were df.tail(), df.dtypes and df.info() and they can
 
 ### Preping the Data Using a Matrix Transpose
 
-I added 4 histograms to the project using Matloplib. Sepal length, sepal width, petal lenght and petal width. As mentioned earlier, the species in the dataset are numerical. Iris Setosa is 0, Iris Versicolor is 1 and Iris Virginica is 2. Before plotting the data I needed to perform a Transpose which is a Matrix operation on the iris data. Transposing flips a matrix over its diagonal. It switches the row and column indices of the first matrix by producing another matrix. Since iris.data is a NumPy array, it separates the array into 4 different arrays (4 dimensions), so all of the sepal length data (element 0) is in the first array, all of the sepal width data (element 1) is in the second array etc. The below object features denotes this list of lists. I then I then made a separate varibale for each of the 4 features using the numerical element numbers of the list which can be seen below.
+I added 4 histograms to the project using Matloplib. Sepal length, sepal width, petal lenght and petal width. As mentioned earlier, the species in the dataset are numerical. Iris Setosa is 0, Iris Versicolor is 1 and Iris Virginica is 2. Before plotting the data I needed to perform a Transpose which is a Matrix operation on the iris data. Transposing flips a matrix over its diagonal. It switches the row and column indices of the first matrix by producing another matrix. Since iris.data is a NumPy array, it separates the array into 4 different arrays (4 dimensions), so all of the sepal length data (element 0) is in the first array, all of the sepal width data (element 1) is in the second array etc. The below object features denotes this list of lists.  I then made a separate variable for each of the 4 features using the numerical element numbers of the list which can be seen below.
 
 
 ```python
@@ -462,7 +475,6 @@ plt.ylabel("Frequency", size = 16)
 
 
 
-​    
 ![png](README_files/README_32_1.png)
 ​    
 
@@ -481,7 +493,9 @@ plt.ylabel("Frequency", size = 16)
 
 
 
-    Text(0, 0.5, 'Frequency')
+```python
+Text(0, 0.5, 'Frequency')
+```
 
 
 
@@ -505,12 +519,13 @@ plt.ylabel("Frequency", size = 16)
 
 
 
-    Text(0, 0.5, 'Frequency')
+```python
+Text(0, 0.5, 'Frequency')
+```
 
 
 
 
-​    
 ![png](README_files/README_34_1.png)
 ​    
 
@@ -529,7 +544,9 @@ plt.ylabel("Frequency", size = 16)
 
 
 
-    Text(0, 0.5, 'Frequency')
+```python
+Text(0, 0.5, 'Frequency')
+```
 
 
 
@@ -558,7 +575,9 @@ plt.legend(title="Target", loc=0)
 
 
 
-    <matplotlib.legend.Legend at 0x1811bd0ceb0>
+```python
+<matplotlib.legend.Legend at 0x1811bd0ceb0>
+```
 
 
 
@@ -583,7 +602,9 @@ plt.legend(title="Target", loc=0)
 
 
 
-    <matplotlib.legend.Legend at 0x1811d018be0>
+```python
+<matplotlib.legend.Legend at 0x1811d018be0>
+```
 
 
 
@@ -608,12 +629,16 @@ sns.pairplot(df, hue = "target", diag_kind = "hist", palette = "nipy_spectral")
 
 
 
-    <seaborn.axisgrid.PairGrid at 0x1811d616a60>
+```python
+<seaborn.axisgrid.PairGrid at 0x1811d616a60>
+```
 
 
 
 
-    <Figure size 864x864 with 0 Axes>
+```
+<Figure size 864x864 with 0 Axes>
+```
 
 
 
@@ -640,13 +665,15 @@ df.corr()
         vertical-align: middle;
     }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-    
-    .dataframe thead th {
-        text-align: right;
-    }
+```python
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+```
 </style>
 <table border="1" class="dataframe">
   <thead>
@@ -719,7 +746,9 @@ sns.heatmap(df.corr(), annot=True, cmap='Wistia')
 
 
 
-    <AxesSubplot:>
+```python
+<AxesSubplot:>
+```
 
 
 
@@ -753,7 +782,9 @@ type(iris)
 
 
 
-    sklearn.utils.Bunch
+```python
+sklearn.utils.Bunch
+```
 
 
 
@@ -766,7 +797,9 @@ I'm now going to introduce some important machine learning terminology that I'll
 print(iris.feature_names)
 ```
 
-    ['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']
+```python
+['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']
+```
 
 
 This represents the names of the four features. They can also be imagined as the column headers for the data. I also printed out two more attributes called `target` and `target_names`. 
@@ -776,11 +809,13 @@ This represents the names of the four features. They can also be imagined as the
 print(iris.target)
 ```
 
-    [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-     0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-     1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2
-     2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-     2 2]
+```python
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2
+ 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ 2 2]
+```
 
 
 
@@ -788,7 +823,9 @@ print(iris.target)
 print(iris.target_names)
 ```
 
-    ['setosa' 'versicolor' 'virginica']
+```python
+['setosa' 'versicolor' 'virginica']
+```
 
 
 The target represents what I am going to predict. A 0 represents Setosa, a 1 represents Versicolor and a 2 represents Virginica as mentioned previously. Some equivalent terms for target are **response**, outcome, outcome, label, dependent variable. I will use the term response throughout this project.
@@ -810,8 +847,10 @@ print(type(iris.data))
 print(type(iris.target))
 ```
 
-    <class 'numpy.ndarray'>
-    <class 'numpy.ndarray'>
+```python
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+```
 
 
 
@@ -819,7 +858,9 @@ print(type(iris.target))
 print(iris.data.shape)
 ```
 
-    (150, 4)
+```python
+(150, 4)
+```
 
 
 
@@ -827,7 +868,9 @@ print(iris.data.shape)
 print(iris.target.shape)
 ```
 
-    (150,)
+```python
+(150,)
+```
 
 
 I have now verified that `iris.data` and `iris.target` meet scikit-learn's four requirements for feature and response objects. The scikit-learn convention is for the feature data to be stored in an object named 'X', and for the response data to be stored in an object named 'y'. We'll store `iris.data` in 'X' and `iris.target` in 'y'. The 'X' is capitalised because it represents a matrix and the 'y' is lower case because it represents a vector. 
@@ -869,8 +912,10 @@ print(X.shape)
 print(y.shape)
 ```
 
-    (150, 4)
-    (150,)
+```python
+(150, 4)
+(150,)
+```
 
 
 We can see above that 'X' is a 2-dimensional array with 150 rows and 4 columns as expected and 'y' is a 1-dimensional array with length 150 since there is one response value for each observation.
@@ -910,7 +955,9 @@ knn.fit(X, y)
 
 
 
-    KNeighborsClassifier(n_neighbors=1)
+```python
+KNeighborsClassifier(n_neighbors=1)
+```
 
 
 
@@ -928,7 +975,9 @@ knn.predict([[3, 5, 4, 2]])
 
 
 
-    array([2])
+```python
+array([2])
+```
 
 
 
@@ -943,7 +992,9 @@ knn.predict(X_new)
 
 
 
-    array([2, 1])
+```python
+array([2, 1])
+```
 
 
 
@@ -968,7 +1019,9 @@ knn.predict(X_new)
 
 
 
-    array([1, 1])
+```python
+array([1, 1])
+```
 
 
 
@@ -988,7 +1041,9 @@ logreg.predict(X_new)
 
 
 
-    array([2, 0])
+```python
+array([2, 0])
+```
 
 
 
@@ -1018,13 +1073,15 @@ logreg.predict(X)
 
 
 
-    array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-           0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-           0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-           2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1,
-           1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-           2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2,
-           2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
+```python
+array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
+```
 
 
 
@@ -1042,7 +1099,9 @@ len(y_pred)
 
 
 
-    150
+```python
+150
+```
 
 
 
@@ -1056,7 +1115,9 @@ from sklearn import metrics
 print(metrics.accuracy_score(y, y_pred))
 ```
 
-    0.96
+```python
+0.96
+```
 
 
 It returns a value of 0.96. This means that it compared the 150 true responses with the corresponding 150 predicted responses and calculated that 96% of our predictions were correct. This is known as our training accuracy because we are testing the model on the same data we used to train the model. We'll now try KNN using the value k=5. We import the class, instantiate the model using the argument n_neighbours=5, fit it with the training data, make predictions on the same data, and calculate the classification accuracy.
@@ -1072,7 +1133,9 @@ y_pred = knn.predict(X)
 print(metrics.accuracy_score(y, y_pred))
 ```
 
-    0.9666666666666667
+```python
+0.9666666666666667
+```
 
 
 This time we get 0.967 which is slightly better than logistic regression. Finally we'll try KNN=1.
@@ -1087,7 +1150,9 @@ y_pred = knn.predict(X)
 print(metrics.accuracy_score(y, y_pred))
 ```
 
-    1.0
+```python
+1.0
+```
 
 
 This time we get a score of 1.0 or 100% accuracy. It performed even better than the other 2 models, and so we would conclude that KNN with k=1 is the best model to use with this data. However, this is misleading. We can see exactly why the KNN model with k=1 would always have 100% training accuracy: To make a prediction for any observation in the training set, KNN searches for the 1 nearest observation in the training set and it would find that exact same observation the second time. KNN has memorised the training set and because we are training on the exact same data it will always make correct predictions. At this point we can conclude that training and testing the models on the same data is not a useful procedure for deciding which model to choose. The goal here is to estimate how well each model is likely to perform on out of sample data. If what we try to maximise is training accuracy, then we're rewarding overly complex models that won't necessarily do well with out of sample data. Creating an unnecessarily complex model is known as overfitting. Models that overfit have learned to identify the noise in the data rather than the signal. In the case of KNN, a very low value of k creates a high complexity model because it follows the noise in the data. The below diagram explains overfitting.
@@ -1115,8 +1180,10 @@ print(X_train.shape)
 print(X_test.shape)
 ```
 
-    (90, 4)
-    (60, 4)
+```python
+(90, 4)
+(60, 4)
+```
 
 
 We can see that the original X of 150x4 has been split into 2 pieces in which X_train is size 90x4 and X_test is size 60x4.
@@ -1127,8 +1194,10 @@ print(y_train.shape)
 print(y_test.shape)
 ```
 
-    (90,)
-    (60,)
+```python
+(90,)
+(60,)
+```
 
 
 The original y of size 150 has also been split into 2 pieces in which y_train is size 90 and y_test size is 60.
@@ -1145,7 +1214,9 @@ logreg.fit(X_train, y_train)
 
 
 
-    LogisticRegression(solver='liblinear')
+```python
+LogisticRegression(solver='liblinear')
+```
 
 
 
@@ -1159,7 +1230,9 @@ y_pred = logreg.predict(X_test)
 print(metrics.accuracy_score(y_test, y_pred))
 ```
 
-    0.9333333333333333
+```python
+0.9333333333333333
+```
 
 
 We can see that this model achieved a testing accuracy of 93%.
@@ -1175,7 +1248,9 @@ y_pred = knn.predict(X_test)
 print(metrics.accuracy_score(y_test, y_pred))
 ```
 
-    0.9666666666666667
+```python
+0.9666666666666667
+```
 
 
 For k=5, we achieve a testing accuracy of 97%.
@@ -1190,7 +1265,9 @@ y_pred = knn.predict(X_test)
 print(metrics.accuracy_score(y_test, y_pred))
 ```
 
-    0.95
+```python
+0.95
+```
 
 
 For k=, we achieve a testing accuracy of 95%.
@@ -1225,12 +1302,13 @@ plt.ylim(0.94,1)
 
 
 
-    (0.94, 1.0)
+```python
+(0.94, 1.0)
+```
 
 
 
 
-​    
 ![png](README_files/README_130_1.png)
 ​    
 
@@ -1252,7 +1330,9 @@ knn.predict([[3, 5, 4, 2]])
 
 
 
-    array([1])
+```python
+array([1])
+```
 
 
 
