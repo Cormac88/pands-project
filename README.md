@@ -1,8 +1,6 @@
 # Iris Dataset
 
-[TOC]
-
-
+[[TOC]]
 
 ## Introduction
 
