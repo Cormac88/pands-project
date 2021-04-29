@@ -1,5 +1,9 @@
 # Iris Dataset
 
+[TOC]
+
+
+
 ## Introduction
 
 The Iris flower data set or Fisher's Iris data (also called Anderson's Iris data set) set is a multivariate data set introduced by the British statistician and biologist Ronald Fisher in his 1936 paper "The use of multiple measurements in taxonomic problems". The data set consists of 3 species of Iris plants (Setosa, Versicolor and Virginica). Edgar Anderson collected 50 samples of the flower, of which each was a different species. He collected 150 in total. For each sample he measured the sepal length and width, and the petal length and width along with the corresponding species. The data contains the sepal length and width, and the petal length and width.
@@ -39,7 +43,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 ```
 
-NumPy is a Python library that provides a multidimensional array object, various derived objects (such as masked arrays and matrices), and an assortment of routines for fast operations on arrays, including mathematical, logical, shape manipulation, sorting, selecting, I/O, discrete Fourier transforms, basic linear algebra, basic statistical operations, random simulation and much more.
+NumPy is a Python library that provides a multidimensional array object, various derived objects (such as masked arrays and matrices), and an assortment of routines for fast operations on arrays, including mathematical, logical, shape manipulation, sorting, selecting, I/O, discrete Fourier transforms, basic linear algebra, basic statistical operations, random simulation and much more. [1]
 
 Pandas is a popular Python package for data science, and with good reason: it offers powerful, expressive and flexible data structures that make data manipulation and analysis easy, among many other things. The DataFrame is one of these structures.
 
@@ -437,7 +441,7 @@ The other operations I used were df.tail(), df.dtypes and df.info() and they can
 
 ### Preping the Data Using a Matrix Transpose
 
-I added 4 histograms to the project using Matloplib. Sepal length, sepal width, petal lenght and petal width. As mentioned earlier, the species in the dataset are numerical. Iris Setosa is 0, Iris Versicolor is 1 and Iris Virginica is 2. Before plotting the data I needed to perform a Transpose which is a Matrix operation on the iris data. Transposing flips a matrix over its diagonal. It switches the row and column indices of the first matrix by producing another matrix. Since iris.data is a NumPy array, it separates the array into 4 different arrays (4 dimensions), so all of the sepal length data (element 0) is in the first array, all of the sepal width data (element 1) is in the second array etc. The below object features denotes this list of lists.  I then made a separate variable for each of the 4 features using the numerical element numbers of the list which can be seen below.
+I added 4 histograms to the project using Seaborn and Matloplib. Sepal length, sepal width, petal length and petal width. As mentioned earlier, the species in the dataset are numerical. Iris Setosa is 0, Iris Versicolor is 1 and Iris Virginica is 2. Before plotting the data I needed to perform a Transpose which is a Matrix operation on the iris data. Transposing flips a matrix over its diagonal. It switches the row and column indices of the first matrix by producing another matrix. Since iris.data is a NumPy array, it separates the array into 4 different arrays (4 dimensions), so all of the sepal length data (element 0) is in the first array, all of the sepal width data (element 1) is in the second array etc. The below object features denotes this list of lists.  I then made a separate variable for each of the 4 features using the numerical element numbers of the list which can be seen below.
 
 
 ```python
@@ -551,7 +555,6 @@ Text(0, 0.5, 'Frequency')
 
 
 
-​    
 ![png](README_files/README_35_1.png)
 ​    
 
@@ -753,7 +756,6 @@ sns.heatmap(df.corr(), annot=True, cmap='Wistia')
 
 
 
-​    
 ![png](README_files/README_47_1.png)
 ​    
 
@@ -1343,7 +1345,11 @@ Train/test split provides a high variance estimate of out of sample accuracy, me
 
 ## References
 
+[01]: https://www.w3schools.com/python/numpy_intro.asp	"Numpy Intro"
+[02]: https://www.w3schools.com/python/pandas/default.asp	"W3 Schools Pandas Tutorial"
+
 https://www.w3schools.com/python/numpy_intro.asp
+
 https://www.w3schools.com/python/pandas/default.asp
 https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html
 https://www.ntirawen.com/2018/09/iris-dataset-prediction-in-machine.html
