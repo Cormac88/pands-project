@@ -1405,7 +1405,7 @@ https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.G
 https://www.kite.com/python/docs/seaborn.pairplot
 https://www.geeksforgeeks.org/how-to-create-a-seaborn-correlation-heatmap-in-python/
 
-[NumPy Intro] (https://www.w3schools.com/python/numpy_intro.asp)
+[NumPy Intro](https://www.w3schools.com/python/numpy_intro.asp)
 
 
 
