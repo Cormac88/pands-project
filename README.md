@@ -1,6 +1,48 @@
 # Iris Dataset
 
-[[TOC]]
+<!-- TOC -->
+
+- [Iris Dataset](#iris-dataset)
+    - [Introduction](#introduction)
+    - [Iris dataset file](#iris-dataset-file)
+    - [Code Used to Analyse the Dataset](#code-used-to-analyse-the-dataset)
+        - [Imported libraries and Modules](#imported-libraries-and-modules)
+        - [Libraries cheat sheets](#libraries-cheat-sheets)
+        - [Properties of the Scikit-learn Iris dataset](#properties-of-the-scikit-learn-iris-dataset)
+        - [Converting the data into a Pandas dataframe](#converting-the-data-into-a-pandas-dataframe)
+        - [Head](#head)
+        - [Describe](#describe)
+        - [groupby.size](#groupbysize)
+        - [Other pandas operations](#other-pandas-operations)
+    - [Data Visualistaton Plots](#data-visualistaton-plots)
+        - [Preping the Data Using a Matrix Transpose](#preping-the-data-using-a-matrix-transpose)
+        - [Histograms](#histograms)
+        - [Scatterplots](#scatterplots)
+        - [Pairplot](#pairplot)
+        - [Heatmap](#heatmap)
+    - [Training a machine model with scikit-learn](#training-a-machine-model-with-scikit-learn)
+        - [Requirements for working with data in scikit-learn](#requirements-for-working-with-data-in-scikit-learn)
+        - [K-nearest neighbors KNN classification](#k-nearest-neighbors-knn-classification)
+            - [Example training data](#example-training-data)
+            - [KNN classification map K=1](#knn-classification-map-k1)
+            - [KNN classification map K=5](#knn-classification-map-k5)
+        - [Scikit-learn 4-step modeling pattern](#scikit-learn-4-step-modeling-pattern)
+            - [Using a different value for K](#using-a-different-value-for-k)
+        - [Evaluation procedure #1: Train and test on the entire dataset](#evaluation-procedure-1-train-and-test-on-the-entire-dataset)
+        - [Classification accuracy:](#classification-accuracy)
+            - [KNN K = 5](#knn-k--5)
+            - [KNN = 1](#knn--1)
+        - [Evaluation procedure #2: Train/test split](#evaluation-procedure-2-traintest-split)
+            - [STEP 2: Train the model on the training set](#step-2-train-the-model-on-the-training-set)
+            - [STEP 3: Make predictions on the testing set](#step-3-make-predictions-on-the-testing-set)
+            - [Repeat for KNN with K=5](#repeat-for-knn-with-k5)
+            - [Repeat for KNN with K=1](#repeat-for-knn-with-k1)
+        - [Can we find an even better value for k?](#can-we-find-an-even-better-value-for-k)
+        - [Making predictions on out of sample data](#making-predictions-on-out-of-sample-data)
+        - [Conclusion and the Downsides of train/test split](#conclusion-and-the-downsides-of-traintest-split)
+    - [References](#references)
+
+<!-- /TOC -->
 
 ## Introduction
 
@@ -1238,6 +1280,7 @@ print(metrics.accuracy_score(y_test, y_pred))
 We can see that this model achieved a testing accuracy of 93%.
 
 Let's repeat steps 2 and 3 for our KNN models with k=5 and k=1
+
 #### Repeat for KNN with K=5
 
 
