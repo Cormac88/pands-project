@@ -1386,11 +1386,6 @@ Train/test split provides a high variance estimate of out of sample accuracy, me
 
 ## References
 
-[01]: https://www.w3schools.com/python/numpy_intro.asp	"Numpy Intro"
-[02]: https://www.w3schools.com/python/pandas/default.asp	"W3 Schools Pandas Tutorial"
-[]: 
-[]: 
-
 https://www.w3schools.com/python/numpy_intro.asp
 
 https://www.w3schools.com/python/pandas/default.asp
@@ -1409,3 +1404,6 @@ https://pandas.pydata.org/docs/getting_started/intro_tutorials/05_add_columns.ht
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.groupby.GroupBy.size.html
 https://www.kite.com/python/docs/seaborn.pairplot
 https://www.geeksforgeeks.org/how-to-create-a-seaborn-correlation-heatmap-in-python/
+
+[01] [NumPy Intro] (https://www.w3schools.com/python/numpy_intro.asp)
+
