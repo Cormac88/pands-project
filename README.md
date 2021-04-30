@@ -1360,7 +1360,7 @@ Train/test split provides a high variance estimate of out of sample accuracy, me
 
 [05] [NumPy Intro - W3 Schools](https://www.w3schools.com/python/numpy_intro.asp)
 
-[06] [Pandas Tutorial](Pandas Tutorial)
+[06] [Pandas Tutorial- DataCamp](https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python)
 
 [07] [Geeks for Geeks - Matplotlib](https://www.geeksforgeeks.org/python-introduction-matplotlib/)
 
