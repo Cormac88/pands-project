@@ -43,6 +43,7 @@
         - [Conclusion and the Downsides of train/test split](#conclusion-and-the-downsides-of-traintest-split)
     - [References](#references)
     - [Inspiration](#inspiration)
+    - [Installing Jupyter Notebook and Running the Code](#installing-jupyter-notebook-and-running-the-code)
 
 <!-- /TOC -->
 
