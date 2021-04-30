@@ -1444,11 +1444,7 @@ This is the list of resources that I used to derive the inspiration and planning
 
 7. Click on 'analysis.ipynb'
 
-   ![image-20210430155650175](C:\Users\corma\AppData\Roaming\Typora\typora-user-images\image-20210430155650175.png)
-
 8. Click on 'Cell' and then select 'Run All'
-
-   ![image-20210430155836565](C:\Users\corma\AppData\Roaming\Typora\typora-user-images\image-20210430155836565.png)
 
 9. When finished, click 'file' and then 'close and halt'
 
