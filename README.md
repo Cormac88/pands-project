@@ -1427,3 +1427,31 @@ This is the list of resources that I used to derive the inspiration and planning
 - [Iris Flower Data Set Machine Learning : Data Analysis and Visualization - YouTube Video](https://www.youtube.com/watch?v=CnlPUQd50fM&list=PLXp-Gj3nTFg39bJ5razk-YsS2-wT_kNCT&index=11)
 - [Seaborn Tutorial 2020 - YouTube Video](https://www.youtube.com/watch?v=6GUZXDef2U0&list=PLXp-Gj3nTFg39bJ5razk-YsS2-wT_kNCT&index=3)
 
+## Installing Jupyter Notebook and Running the Code
+
+1. In the command prompt go the the directory ~\Anaconda\Scripts.
+
+2. Type 'pip install jupyter' and press enter
+
+3. Wait for jupyter to finish installing
+
+4. Change directory to the folder that contains the 'analysis.ipynb'
+
+5. Type 'jupyter notebook'
+
+6. Jupyter Notebook will open in your browser. Keep the command prompt window open as it needs to stay running while Jupyter Notebook is active.
+
+7. Click on 'analysis.ipynb'
+
+   ![image-20210430155650175](C:\Users\corma\AppData\Roaming\Typora\typora-user-images\image-20210430155650175.png)
+
+8. Click on 'Cell' and then select 'Run All'
+
+   ![image-20210430155836565](C:\Users\corma\AppData\Roaming\Typora\typora-user-images\image-20210430155836565.png)
+
+9. When finished, click 'file' and then 'close and halt'
+
+10. In the Home page click 'logout' and then press press 'ctrl + C' in the command prompt to end the session.
+
+Please see this video [Install Jupyter Notebook on Windows 10](https://www.youtube.com/watch?v=otmWEEFysms&t=165s) if you are having any issues.
+
